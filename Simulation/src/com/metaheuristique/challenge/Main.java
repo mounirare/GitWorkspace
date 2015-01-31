@@ -33,7 +33,7 @@ public class Main {
 				System.out.println("Navette");
 				double[] data = ExtractFleetData(tabFleet[i]); // Extration des données de la ligne
 				for (int j = 0; j < data.length; j++) {
-					System.out.print(data[j] + "**");
+					System.out.print(data[j] + " ** ");
 				}
 				System.out.println();
 			}
