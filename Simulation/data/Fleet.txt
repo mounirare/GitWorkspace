@@ -1,0 +1,5 @@
+type ; X ; Y ; C ; Smax ; cv ; cf ;
+COACH ; -8 ; 8 ; 20 ; 4 ;
+COACH ; 8 ; 4 ; 20 ; 4 ;
+SHUTTLE ; 0 ; 6 ; 10 ; 1.5 ; 150 ;
+SHUTTLE ; -8 ; -2 ; 10 ; 1.5 ; 150 ;

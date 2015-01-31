@@ -1,0 +1,11 @@
+stop type ; name ; postcode ; city ; X ; Y ; pi ; Dmax ;
+HUB ; h ; 1 ; VA ; 2 ; -8 ;
+BUSSTOP ; b1 ; 1 ; VA ; -10 ; 4 ; 3 ; 2500
+BUSSTOP ; b2 ; 1 ; VA ; -10 ; -6 ; 2 ; 2500
+BUSSTOP ; b3 ; 1 ; VA ; 0 ; -4 ; 0 ; 2500
+BUSSTOP ; b4 ; 1 ; VA ; 6 ; -4 ; 7 ; 2500
+BUSSTOP ; b5 ; 1 ; VA ; 4 ; 2 ; 7 ; 2500
+BUSSTOP ; b6 ; 1 ; VA ; 10 ; 10 ; 5 ; 2500
+BUSSTOP ; b7 ; 1 ; VA ; 2 ; 8 ; 3 ; 2500
+BUSSTOP ; b8 ; 1 ; VA ; -2 ; 2 ; 5 ; 2500
+BUSSTOP ; b9 ; 1 ; VA ; -6 ; 6 ; 10 ; 2500
