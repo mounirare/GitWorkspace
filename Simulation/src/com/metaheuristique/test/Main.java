@@ -10,6 +10,7 @@ public class Main {
 		fichier.ecriture("test.txt", montext);
 		fichier.ajout("test.txt", "Hello");
 		System.out.println(fichier.lecture("test.txt"));
+		System.out.println("Test 1");
 	}
 
 }
