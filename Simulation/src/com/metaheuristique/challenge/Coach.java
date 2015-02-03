@@ -21,16 +21,31 @@ public class Coach {
 
 	public Coach(String data){
 		String[] datas = data.split(";");
-		if(datas[0].equals("COACH")){
-			this.idCoach = datas[1];
-			this.coachCapacity = Integer.parseInt(datas[2]);
-			this.maxStop = Integer.parseInt(datas[3]);
-			this.costKm = Integer.parseInt(datas[4]);
-			this.posX = Float.parseFloat(datas[6]);
-			this.posY = Float.parseFloat(datas[7]);
-			
-		}else{
-			System.err.println("Input data Error");
-		}
+		this.idCoach = datas[1];
+		this.coachCapacity = Integer.parseInt(datas[2]);
+		this.chRemainTime = 0;
+		this.nbStopMade = 0;
+		this.nbPassengers = 0;
+		this.maxStop = Integer.parseInt(datas[3]);
+		this.costKm = Integer.parseInt(datas[4]);
+		this.posX = Float.parseFloat(datas[6]);
+		this.posY = Float.parseFloat(datas[7]);
+		busStopTraveled = new ArrayList<Integer>();
 	}
+
+	@Override
+	public String toString() {
+		return "\nId : " + idCoach
+				+ "\nCapacity : " + coachCapacity
+				+ "\nRemainTime : " + chRemainTime 
+				+ "\nStopMade : " + nbStopMade 
+				+ "\nNbPassengers : " + nbPassengers 
+				+ "\nMaxStop : " + maxStop 
+				+ "\nCost/Km : " + costKm 
+				+ "\nPosX : " + posX 
+				+ "\nPosY : "	+ posY 
+				+ "\nBusStopTraveled : " + busStopTraveled ;
+	}
+	
+	
 }

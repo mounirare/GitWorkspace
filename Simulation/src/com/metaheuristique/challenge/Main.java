@@ -49,12 +49,27 @@ public class Main {
 		System.out.println(ed.readDistTimeCoo());
 		System.out.println(ed.readDistTimeShu());*/
 		
-		ArrayList<String> busStop = ed.readBusStops();
+		ArrayList<String> data = ed.readBusStops();
+		
 		ArrayList<BusStop> busStopList = new ArrayList<BusStop>();
-		for (int i = 0; i < busStop.size(); i++) {
-			busStopList.add(new BusStop(busStop.get(i)));
+		for (int i = 0; i < data.size(); i++) {
+			busStopList.add(new BusStop(data.get(i)));
 		}
 		System.out.println(busStopList.toString());
+		
+		data = ed.readFleet();
+		ArrayList<Shuttle> shuttleList = new ArrayList<Shuttle>();
+		ArrayList<Coach> coachList = new ArrayList<Coach>();
+		for (int i = 0; i < data.size(); i++) {
+			if(data.get(i).charAt(0) == 'C')
+				coachList.add(new Coach(data.get(i)));
+			else
+				shuttleList.add(new Shuttle(data.get(i)));
+		}
+		System.out.println("================================================");
+		System.out.println(coachList.toString());
+		System.out.println("================================================");
+		System.out.println(shuttleList.toString());
 	}
 
 }
