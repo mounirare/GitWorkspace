@@ -14,6 +14,7 @@ public class Shuttle {
 	private float posX;
 	private float posY;
 	private ArrayList<String> busStopTraveled;
+	private int indPos;
 	
 	public Shuttle(){
 

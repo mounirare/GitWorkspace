@@ -9,6 +9,7 @@ public class BusStop {
 	private float posY;
 	private int nbPassengers;
 	private int remainTime;
+	private int indPos;
 	
 	
 	public BusStop(){

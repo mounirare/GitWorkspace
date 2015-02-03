@@ -14,6 +14,7 @@ public class Coach {
 	private float posX;
 	private float posY;
 	private ArrayList<Integer> busStopTraveled;
+	private int indPos;
 
 	public Coach(){
 
