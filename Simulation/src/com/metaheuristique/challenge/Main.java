@@ -1,5 +1,7 @@
 package com.metaheuristique.challenge;
 
+import java.util.ArrayList;
+
 import com.metaheuristique.utils.ExtractData;
 import com.metaheuristique.utils.Fichier;
 
@@ -41,11 +43,18 @@ public class Main {
 		}*/
 		
 		ExtractData ed = new ExtractData();
-		System.out.println(ed.readBusStops());
+		/*System.out.println(ed.readBusStops());
 		System.out.println(ed.readFleet());
 		System.out.println(ed.readDistTimeCoa());
 		System.out.println(ed.readDistTimeCoo());
-		System.out.println(ed.readDistTimeShu());
+		System.out.println(ed.readDistTimeShu());*/
+		
+		ArrayList<String> busStop = ed.readBusStops();
+		ArrayList<BusStop> busStopList = new ArrayList<BusStop>();
+		for (int i = 0; i < busStop.size(); i++) {
+			busStopList.add(new BusStop(busStop.get(i)));
+		}
+		System.out.println(busStopList.toString());
 	}
 
 }
