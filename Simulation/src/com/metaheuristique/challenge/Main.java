@@ -1,5 +1,6 @@
 package com.metaheuristique.challenge;
 
+import com.metaheuristique.utils.ExtractData;
 import com.metaheuristique.utils.Fichier;
 
 public class Main {
@@ -15,7 +16,7 @@ public class Main {
 	
 	public static void main(String[] args) {
 		Fichier f = new Fichier();
-		
+		/*
 		String fleet = f.lecture("data/Fleet.txt");
 		String tabFleet[] = fleet.split("\n");
 		for (int i = 1; i < tabFleet.length; i++) { // Debuter à la deuxieme ligne, sauter les descriptions
@@ -37,7 +38,14 @@ public class Main {
 				}
 				System.out.println();
 			}
-		}
+		}*/
+		
+		ExtractData ed = new ExtractData();
+		System.out.println(ed.readBusStops());
+		System.out.println(ed.readFleet());
+		System.out.println(ed.readDistTimeCoa());
+		System.out.println(ed.readDistTimeCoo());
+		System.out.println(ed.readDistTimeShu());
 		
 	}
 
