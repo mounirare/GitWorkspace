@@ -46,7 +46,6 @@ public class Main {
 		System.out.println(ed.readDistTimeCoa());
 		System.out.println(ed.readDistTimeCoo());
 		System.out.println(ed.readDistTimeShu());
-		
 	}
 
 }
