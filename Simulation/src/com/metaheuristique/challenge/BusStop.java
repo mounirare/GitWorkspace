@@ -1,5 +1,7 @@
 package com.metaheuristique.challenge;
 
+import com.metaheuristique.utils.Coordinates;
+
 public class BusStop {
 
 	private String idBusStop;
@@ -25,6 +27,18 @@ public class BusStop {
 		this.posY = Float.parseFloat(datas[5]);
 		this.nbPassengers = Integer.parseInt(datas[6]);
 		this.remainTime = Integer.parseInt(datas[7]);
+	}
+	
+	public BusStop(String data, Coordinates coordinates){
+		String[] datas = data.split(";");
+		this.idBusStop = datas[1];
+		this.postCode = Integer.parseInt(datas[2]);
+		this.city = datas[3];
+		this.posX = Float.parseFloat(datas[4]);
+		this.posY = Float.parseFloat(datas[5]);
+		this.nbPassengers = Integer.parseInt(datas[6]);
+		this.remainTime = Integer.parseInt(datas[7]);
+		this.indPos = coordinates.getIndex(posX, posY);
 	}
 
 	@Override

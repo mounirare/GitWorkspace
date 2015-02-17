@@ -2,6 +2,7 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
+import com.metaheuristique.utils.Coordinates;
 import com.metaheuristique.utils.DistanceTime;
 import com.metaheuristique.utils.ExtractData;
 import com.metaheuristique.utils.Fichier;
@@ -51,11 +52,13 @@ public class Main {
 		System.out.println(ed.readDistTimeShu());*/
 		
 		//Extraction du fichier Busstops.csv
+		Coordinates coordinates = new Coordinates(ed.readDistTimeCoo());
+		
 		ArrayList<String> busStopData = ed.readBusStops();
 		
 		ArrayList<BusStop> busStopList = new ArrayList<BusStop>();
 		for (int i = 0; i < busStopData.size(); i++) {
-			busStopList.add(new BusStop(busStopData.get(i)));
+			busStopList.add(new BusStop(busStopData.get(i), coordinates));
 		}
 		System.out.println(busStopList.toString());
 		
@@ -65,9 +68,9 @@ public class Main {
 		ArrayList<Coach> coachList = new ArrayList<Coach>();
 		for (int i = 0; i < feetData.size(); i++) {
 			if(feetData.get(i).charAt(0) == 'C') 	//identification si on a un bus ou une navette
-				coachList.add(new Coach(feetData.get(i)));
+				coachList.add(new Coach(feetData.get(i), coordinates));
 			else
-				shuttleList.add(new Shuttle(feetData.get(i)));
+				shuttleList.add(new Shuttle(feetData.get(i), coordinates));
 		}
 		System.out.println("================================================");
 		System.out.println(coachList.toString());
