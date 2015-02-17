@@ -44,6 +44,16 @@ public class Solution {
 		return sol;
 	}
 	
+	public void calculCout(){
+		totalCost = 0.0;
+		for(int i=0; i<coachList.size(); i++){
+			totalCost += coachList.get(i).getCost();
+		}
+		for(int i=0; i<shuttleList.size(); i++){
+			totalCost += shuttleList.get(i).getCost();
+		}
+	}
+	
 	public void enregistrement(){
 		Fichier fichier = new Fichier();
 		String ecriture = "VEHICLE_ID;TOUR_POSITION;LOCATION_ID;LOCATION_TYPE\n";
