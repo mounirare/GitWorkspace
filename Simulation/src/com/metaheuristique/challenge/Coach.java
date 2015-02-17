@@ -13,7 +13,7 @@ public class Coach {
 	private int costKm;
 	private float posX;
 	private float posY;
-	private ArrayList<Integer> busStopTraveled;
+	private ArrayList<String> busStopTraveled;
 	private int indPos;
 
 	public Coach(){
@@ -31,7 +31,7 @@ public class Coach {
 		this.costKm = Integer.parseInt(datas[4]);
 		this.posX = Float.parseFloat(datas[6]);
 		this.posY = Float.parseFloat(datas[7]);
-		busStopTraveled = new ArrayList<Integer>();
+		busStopTraveled = new ArrayList<String>();
 	}
 
 	@Override
@@ -120,11 +120,11 @@ public class Coach {
 		this.posY = posY;
 	}
 
-	public ArrayList<Integer> getBusStopTraveled() {
+	public ArrayList<String> getBusStopTraveled() {
 		return busStopTraveled;
 	}
 
-	public void setBusStopTraveled(ArrayList<Integer> busStopTraveled) {
+	public void setBusStopTraveled(ArrayList<String> busStopTraveled) {
 		this.busStopTraveled = busStopTraveled;
 	}
 

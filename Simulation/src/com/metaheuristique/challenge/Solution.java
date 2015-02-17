@@ -27,7 +27,20 @@ public class Solution {
 		}
 		return sol;
 		
-		
+	}
+	
+	public String shuttlePath(int indice){
+		String sol= new String();
+		Shuttle s = shuttleList.get(indice);
+		for(int i=0; i<s.getBusStopTraveled().size(); i++){
+			String stop = s.getIdShuttle()+";"+i+1+";"+s.getBusStopTraveled().get(i)+";";
+			if(s.getBusStopTraveled().get(i).substring(0, 1) == "B")
+				stop = stop+"BUSSTOP";
+			else
+				stop = stop+"HUB";
+			sol = sol + stop + "\n";
+		}
+		return sol;
 		
 	}
 }
