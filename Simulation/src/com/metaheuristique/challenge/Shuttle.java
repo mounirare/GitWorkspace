@@ -2,6 +2,8 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
+import com.metaheuristique.utils.Coordinates;
+
 public class Shuttle {
  
 	private String idShuttle;
@@ -34,6 +36,21 @@ public class Shuttle {
 		busStopTraveled = new ArrayList<String>();
 	}
 
+	public Shuttle(String data, Coordinates coordinates){
+		String[] datas = data.split(";");
+		this.idShuttle = datas[1];
+		this.shuttleCapacity = Integer.parseInt(datas[2]);
+		this.shRemainTime = 0;
+		this.distanceTraveled = 0;
+		this.nbPassengers = 0;
+		this.costKm = Integer.parseInt(datas[4]);
+		this.costUsage = Integer.parseInt(datas[5]);
+		this.posX = Float.parseFloat(datas[6]);
+		this.posY = Float.parseFloat(datas[7]);
+		this.indPos = coordinates.getIndex(posX, posY);
+		busStopTraveled = new ArrayList<String>();
+	}
+	
 	@Override
 	public String toString() {
 		return "\nId : " + idShuttle 

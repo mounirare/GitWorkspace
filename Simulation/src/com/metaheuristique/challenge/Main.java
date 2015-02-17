@@ -2,6 +2,7 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
+import com.metaheuristique.utils.Coordinates;
 import com.metaheuristique.utils.DistanceTime;
 import com.metaheuristique.utils.ExtractData;
 import com.metaheuristique.utils.Fichier;
@@ -51,6 +52,8 @@ public class Main {
 		System.out.println(ed.readDistTimeShu());*/
 		
 		//Extraction du fichier Busstops.csv
+		Coordinates coordinates = new Coordinates(ed.readDistTimeCoo());
+		
 		ArrayList<String> busStopData = ed.readBusStops();
 		
 		ArrayList<BusStop> busStopList = new ArrayList<BusStop>();
