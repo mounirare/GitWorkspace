@@ -2,8 +2,6 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
-import com.metaheuristique.utils.Coordinates;
-
 public class Coach {
 
 	private String idCoach;
@@ -15,7 +13,7 @@ public class Coach {
 	private int costKm;
 	private float posX;
 	private float posY;
-	private ArrayList<String> busStopTraveled;
+	private ArrayList<Integer> busStopTraveled;
 	private int indPos;
 
 	public Coach(){
@@ -33,21 +31,6 @@ public class Coach {
 		this.costKm = Integer.parseInt(datas[4]);
 		this.posX = Float.parseFloat(datas[6]);
 		this.posY = Float.parseFloat(datas[7]);
-		busStopTraveled = new ArrayList<String>();
-	}
-	
-	public Coach(String data, Coordinates coordinates){
-		String[] datas = data.split(";");
-		this.idCoach = datas[1];
-		this.coachCapacity = Integer.parseInt(datas[2]);
-		this.chRemainTime = 0;
-		this.nbStopMade = 0;
-		this.nbPassengers = 0;
-		this.maxStop = Integer.parseInt(datas[3]);
-		this.costKm = Integer.parseInt(datas[4]);
-		this.posX = Float.parseFloat(datas[6]);
-		this.posY = Float.parseFloat(datas[7]);
-		this.indPos = coordinates.getIndex(posX, posY);
 		busStopTraveled = new ArrayList<Integer>();
 	}
 
@@ -137,11 +120,11 @@ public class Coach {
 		this.posY = posY;
 	}
 
-	public ArrayList<String> getBusStopTraveled() {
+	public ArrayList<Integer> getBusStopTraveled() {
 		return busStopTraveled;
 	}
 
-	public void setBusStopTraveled(ArrayList<String> busStopTraveled) {
+	public void setBusStopTraveled(ArrayList<Integer> busStopTraveled) {
 		this.busStopTraveled = busStopTraveled;
 	}
 
@@ -152,6 +135,5 @@ public class Coach {
 	public void setIndPos(int indPos) {
 		this.indPos = indPos;
 	}	
-
 	
 }
