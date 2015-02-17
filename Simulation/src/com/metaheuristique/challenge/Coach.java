@@ -9,6 +9,7 @@ public class Coach {
 	private String idCoach;
 	private int coachCapacity;
 	private int chRemainTime;
+	private int distanceTraveled;
 	private int nbStopMade;
 	private int nbPassengers;
 	private int maxStop;
@@ -28,6 +29,7 @@ public class Coach {
 		this.coachCapacity = Integer.parseInt(datas[2]);
 		this.chRemainTime = 0;
 		this.nbStopMade = 0;
+		this.distanceTraveled = 0;
 		this.nbPassengers = 0;
 		this.maxStop = Integer.parseInt(datas[3]);
 		this.costKm = Integer.parseInt(datas[4]);
@@ -41,6 +43,7 @@ public class Coach {
 		this.idCoach = datas[1];
 		this.coachCapacity = Integer.parseInt(datas[2]);
 		this.chRemainTime = 0;
+		this.distanceTraveled = 0;
 		this.nbStopMade = 0;
 		this.nbPassengers = 0;
 		this.maxStop = Integer.parseInt(datas[3]);

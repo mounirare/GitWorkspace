@@ -153,5 +153,7 @@ public class Shuttle {
 		this.indPos = indPos;
 	}
 	
-	
+	public int getCost(){
+		return costUsage + (costKm * distanceTraveled);
+	}
 }
