@@ -47,6 +47,93 @@ public class Coach {
 				+ "\nPosY : "	+ posY 
 				+ "\nBusStopTraveled : " + busStopTraveled ;
 	}
-	
+
+	public String getIdCoach() {
+		return idCoach;
+	}
+
+	public void setIdCoach(String idCoach) {
+		this.idCoach = idCoach;
+	}
+
+	public int getCoachCapacity() {
+		return coachCapacity;
+	}
+
+	public void setCoachCapacity(int coachCapacity) {
+		this.coachCapacity = coachCapacity;
+	}
+
+	public int getChRemainTime() {
+		return chRemainTime;
+	}
+
+	public void setChRemainTime(int chRemainTime) {
+		this.chRemainTime = chRemainTime;
+	}
+
+	public int getNbStopMade() {
+		return nbStopMade;
+	}
+
+	public void setNbStopMade(int nbStopMade) {
+		this.nbStopMade = nbStopMade;
+	}
+
+	public int getNbPassengers() {
+		return nbPassengers;
+	}
+
+	public void setNbPassengers(int nbPassengers) {
+		this.nbPassengers = nbPassengers;
+	}
+
+	public int getMaxStop() {
+		return maxStop;
+	}
+
+	public void setMaxStop(int maxStop) {
+		this.maxStop = maxStop;
+	}
+
+	public int getCostKm() {
+		return costKm;
+	}
+
+	public void setCostKm(int costKm) {
+		this.costKm = costKm;
+	}
+
+	public float getPosX() {
+		return posX;
+	}
+
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+
+	public float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
+	public ArrayList<Integer> getBusStopTraveled() {
+		return busStopTraveled;
+	}
+
+	public void setBusStopTraveled(ArrayList<Integer> busStopTraveled) {
+		this.busStopTraveled = busStopTraveled;
+	}
+
+	public int getIndPos() {
+		return indPos;
+	}
+
+	public void setIndPos(int indPos) {
+		this.indPos = indPos;
+	}	
 	
 }

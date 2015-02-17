@@ -47,6 +47,94 @@ public class Shuttle {
 				+ "\nPosY : " + posY
 				+ "\nBusStopTraveled : " + busStopTraveled;
 	}
+
+	public String getIdShuttle() {
+		return idShuttle;
+	}
+
+	public void setIdShuttle(String idShuttle) {
+		this.idShuttle = idShuttle;
+	}
+
+	public int getShuttleCapacity() {
+		return shuttleCapacity;
+	}
+
+	public void setShuttleCapacity(int shuttleCapacity) {
+		this.shuttleCapacity = shuttleCapacity;
+	}
+
+	public int getShRemainTime() {
+		return shRemainTime;
+	}
+
+	public void setShRemainTime(int shRemainTime) {
+		this.shRemainTime = shRemainTime;
+	}
+
+	public int getDistanceTraveled() {
+		return distanceTraveled;
+	}
+
+	public void setDistanceTraveled(int distanceTraveled) {
+		this.distanceTraveled = distanceTraveled;
+	}
+
+	public int getNbPassengers() {
+		return nbPassengers;
+	}
+
+	public void setNbPassengers(int nbPassengers) {
+		this.nbPassengers = nbPassengers;
+	}
+
+	public int getCostKm() {
+		return costKm;
+	}
+
+	public void setCostKm(int costKm) {
+		this.costKm = costKm;
+	}
+
+	public int getCostUsage() {
+		return costUsage;
+	}
+
+	public void setCostUsage(int costUsage) {
+		this.costUsage = costUsage;
+	}
+
+	public float getPosX() {
+		return posX;
+	}
+
+	public void setPosX(float posX) {
+		this.posX = posX;
+	}
+
+	public float getPosY() {
+		return posY;
+	}
+
+	public void setPosY(float posY) {
+		this.posY = posY;
+	}
+
+	public ArrayList<String> getBusStopTraveled() {
+		return busStopTraveled;
+	}
+
+	public void setBusStopTraveled(ArrayList<String> busStopTraveled) {
+		this.busStopTraveled = busStopTraveled;
+	}
+
+	public int getIndPos() {
+		return indPos;
+	}
+
+	public void setIndPos(int indPos) {
+		this.indPos = indPos;
+	}
 	
 	
 }

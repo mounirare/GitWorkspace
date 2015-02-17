@@ -51,23 +51,23 @@ public class Main {
 		System.out.println(ed.readDistTimeShu());*/
 		
 		//Extraction du fichier Busstops.csv
-		ArrayList<String> data = ed.readBusStops();
+		ArrayList<String> busStopData = ed.readBusStops();
 		
 		ArrayList<BusStop> busStopList = new ArrayList<BusStop>();
-		for (int i = 0; i < data.size(); i++) {
-			busStopList.add(new BusStop(data.get(i)));
+		for (int i = 0; i < busStopData.size(); i++) {
+			busStopList.add(new BusStop(busStopData.get(i)));
 		}
 		System.out.println(busStopList.toString());
 		
 		//Extraction du fichier Fleet.csv
-		data = ed.readFleet();
+		ArrayList<String> feetData = ed.readFleet();
 		ArrayList<Shuttle> shuttleList = new ArrayList<Shuttle>();
 		ArrayList<Coach> coachList = new ArrayList<Coach>();
-		for (int i = 0; i < data.size(); i++) {
-			if(data.get(i).charAt(0) == 'C') 	//identification si on a un bus ou une navette
-				coachList.add(new Coach(data.get(i)));
+		for (int i = 0; i < feetData.size(); i++) {
+			if(feetData.get(i).charAt(0) == 'C') 	//identification si on a un bus ou une navette
+				coachList.add(new Coach(feetData.get(i)));
 			else
-				shuttleList.add(new Shuttle(data.get(i)));
+				shuttleList.add(new Shuttle(feetData.get(i)));
 		}
 		System.out.println("================================================");
 		System.out.println(coachList.toString());
@@ -75,16 +75,37 @@ public class Main {
 		System.out.println(shuttleList.toString());
 		
 		//Extraction du fichier DistanceTimesData_COACHES.csv
-		data = ed.readDistTimeCoa();
-		System.out.println("Longueur = " + data.size());
-		DistanceTime matCoach[][] = new DistanceTime[data.size()][data.size()]; //Declaration de la matrice dist/temp pour les bus
+		ArrayList<String> distTimeCoaData = ed.readDistTimeCoa();
+		System.out.println("Longueur = " + distTimeCoaData.size());
+		DistanceTime matCoach[][] = new DistanceTime[distTimeCoaData.size()][distTimeCoaData.size()]; //Declaration de la matrice dist/temp pour les bus
 																				//c'est une matrice d'objets contenants la distance et le temps
 		for (int i = 0; i < matCoach.length; i++) {
-			String [] dataRow = data.get(i).split(";");
+			String [] dataRow = distTimeCoaData.get(i).split(";");
 			for (int j = 0; j < matCoach[i].length; j++) {
 				matCoach[i][j] = new DistanceTime(dataRow[j*2], dataRow[j*2+1]); //On stocke la distance et le temps entre les points i et j
 			}
 		}
+		
+		System.out.println("================================================");
+		for(int i=0; i<matCoach.length; i++){
+			for(int j=0; j<matCoach.length; j++){
+				System.out.print(matCoach[i][j].toString()+" ");
+			}
+			System.out.println("");
+		}
+		
+		/*ArrayList<String> distancetimeCoord = ed.readDistTimeCoo();
+		
+		for(int i=0; i<busStopList.size(); i++){
+			float posX = Float.parseFloat(distancetimeCoord.get(i).substring(0, 1));
+			float posY = Float.parseFloat(distancetimeCoord.get(i).substring(2, 3));
+			System.out.println();
+		}
+		
+		
+		for(int i=0; i<busStopList.size(); i++){
+			System.out.print(busStopList.get(i).getPosX()+";"+busStopList.get(i).getPosY()+", ");
+		}*/
 	}
 
 }
