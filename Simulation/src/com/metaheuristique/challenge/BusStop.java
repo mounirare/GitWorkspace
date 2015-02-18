@@ -49,7 +49,8 @@ public class BusStop {
 				+ "\nPosX : " + posX 
 				+ "\nPosY : " + posY
 				+ "\nNbPassengers : " + nbPassengers 
-				+ "\nRemainTime : " + remainTime;
+				+ "\nRemainTime : " + remainTime
+				+ "\nInd Pos : " + indPos ;
 	}
 
 	public String getIdBusStop() {
