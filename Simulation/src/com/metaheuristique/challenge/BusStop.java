@@ -12,8 +12,17 @@ public class BusStop {
 	private int nbPassengers;
 	private int remainTime;
 	private int indPos;
+	private Coach busPasse;
 	
 	
+	public Coach getBusPasse() {
+		return busPasse;
+	}
+
+	public void setBusPasse(Coach busPasse) {
+		this.busPasse = busPasse;
+	}
+
 	public BusStop(){
 
 	}

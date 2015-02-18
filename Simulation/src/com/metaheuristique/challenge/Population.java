@@ -76,6 +76,7 @@ public class Population {
 				temp.add(busStopDisp.get(i).getIdBusStop());
 				c.setBusStopTraveled(temp);
 				c.setChRemainTime(busStopDisp.get(i).getRemainTime());
+				busStopDisp.get(i).setBusPasse(c);
 				c.setNbStopMade(1);
 				c.setIndPos(busStopDisp.get(i).getIndPos());
 				if(busStopDisp.get(i).getIdBusStop().substring(0, 1).equals("H")){
@@ -97,6 +98,7 @@ public class Population {
 				temp = c.getBusStopTraveled();
 				temp.add(busStopDisp.get(i).getIdBusStop());
 				c.setBusStopTraveled(temp);
+				busStopDisp.get(i).setBusPasse(c);
 				if (c.getChRemainTime() - matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()< busStopDisp.get(i).getRemainTime())
 					c.setChRemainTime(c.getChRemainTime() - matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime());
 				else
