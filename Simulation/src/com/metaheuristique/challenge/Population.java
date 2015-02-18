@@ -114,7 +114,7 @@ public class Population {
 				if(busStopDisp.get(i).getIdBusStop().substring(0, 1) == "H"){
 					hub = true;
 				}
-				busStopDisp.remove(0);
+				busStopDisp.remove(0); 
 			}
 			else{
 				i++;

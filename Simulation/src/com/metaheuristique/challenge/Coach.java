@@ -166,6 +166,6 @@ public class Coach {
 	}	
 	
 	public int getCost(){
-		return costKm * distanceTraveled;
+		return costKm * distanceTraveled; 
 	}
 }

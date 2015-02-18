@@ -31,6 +31,6 @@ public class DistanceTime {
 	}
 
 	public void setTime(int time) {
-		this.time = time;
+		this.time = time; 
 	}
 }
