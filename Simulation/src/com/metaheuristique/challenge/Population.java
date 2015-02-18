@@ -1,6 +1,7 @@
 package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 import com.metaheuristique.utils.DistanceTime;
 
@@ -24,16 +25,45 @@ public class Population {
 	
 	public Solution calculSol(){
 		solutions.add(new Solution(coachs, shuttles));
-		
-		return null;
+		ArrayList<BusStop> busStopRest = busStops;
+		Collections.shuffle(coachs);
+		Collections.shuffle(shuttles);
+		for(int i= 0; i < coachs.size(); i++){
+			traitementCoach(coachs.get(i), busStopRest);
+		}
+		int j=0;
+		while(!busStopRest.isEmpty() && j < shuttles.size()){
+			traitementShuttle(shuttles.get(j), busStopRest);
+			j++;
+		}
+		solutions.get(solutions.size()-1).calculCout();
+		return solutions.get(solutions.size()-1);
 		
 	}
 	
-	public void traitementCoach(){
-		
+	public void traitementCoach(Coach c, ArrayList<BusStop> busStopRest){
+		/*
+		 * - choisir un arrêt A aléatoirement tel que : P(A) =! 0 , C>P(A)
+			- Trest = Trest(A)
+			- N-- 
+			*- Si A != HUB, alors C = C - P(A), P(A) = 0 sinon finir
+			- Si N > 1 continuer sinon aller au HUB et finir
+			- chercher A’ aléatoirement tel que P(A’) =! 0 et C > P(A’) 
+			- Si Trest> T(A,A’)+T(A’,HUB) et Trest(A’) > T(A’, HUB)	//de base la dernière
+				- Se déplacer vers A’ (A <- A’)			//condition doit être vraie
+				- Trest = min(Trest - T(A,A’), Trest(A’))
+				- N--
+			- Sinon choisir un autre arrêt
+			-revenir à  *
+		 * 
+		 */
+		ArrayList<BusStop> busStopDisp = busStopRest;
+		while(c.getNbStopMade()<c.getMaxStop()){
+			
+		}
 	}
 	
-	public void traitementShuttle(){
+	public void traitementShuttle(Shuttle s, ArrayList<BusStop> busStopRest){
 		
 	}
 
