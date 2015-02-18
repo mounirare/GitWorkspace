@@ -38,6 +38,14 @@ public class Coach {
 		busStopTraveled = new ArrayList<String>();
 	}
 	
+	public int getDistanceTraveled() {
+		return distanceTraveled;
+	}
+
+	public void setDistanceTraveled(int distanceTraveled) {
+		this.distanceTraveled = distanceTraveled;
+	}
+
 	public Coach(String data, Coordinates coordinates){
 		String[] datas = data.split(";");
 		this.idCoach = datas[1];
