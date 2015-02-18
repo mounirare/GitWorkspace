@@ -125,6 +125,8 @@ public class Main {
 		for(int i=0; i<busStopList.size(); i++){
 			System.out.print(busStopList.get(i).getPosX()+";"+busStopList.get(i).getPosY()+", ");
 		}*/
+		
+		Graphic graphic = new Graphic("Carte", busStopList);
 	}
 
 }
