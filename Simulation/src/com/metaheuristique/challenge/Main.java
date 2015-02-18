@@ -72,7 +72,7 @@ public class Main {
 			else
 				shuttleList.add(new Shuttle(feetData.get(i), coordinates));
 		}
-		
+		/*
 		// Ajout des elements dans les listes
 		for (int i = 0; i < coachList.size(); i++) {
 			for (int j = 0; j < 3; j++) {
@@ -87,7 +87,7 @@ public class Main {
 				shuttleList.get(i).getBusStopTraveled().add(busStopList.get(id).getIdBusStop());
 			}
 		}
-		
+		*/
 		System.out.println("================================================");
 		System.out.println(coachList.toString());
 		System.out.println("================================================");

@@ -43,14 +43,14 @@ public class BusStop {
 
 	@Override
 	public String toString() {
-		return "\nId : " + idBusStop 
-				+ "\nPost Code : " + postCode
+		return  idBusStop ;
+				/*+ "\nPost Code : " + postCode
 				+ "\nCity : " + city 
 				+ "\nPosX : " + posX 
 				+ "\nPosY : " + posY
 				+ "\nNbPassengers : " + nbPassengers 
 				+ "\nRemainTime : " + remainTime
-				+ "\nInd Pos : " + indPos ;
+				+ "\nInd Pos : " + indPos ;*/
 	}
 
 	public String getIdBusStop() {

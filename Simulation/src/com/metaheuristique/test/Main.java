@@ -15,6 +15,9 @@ public class Main {
 		
 		ExtractData ed = new ExtractData();
 		Coordinates c = new Coordinates(ed.readDistTimeCoo());
+		Fichier fichier = new Fichier();
+		String montext = "Bonjour les amis.\nBon travail.";
+		fichier.ecriture("toto.txt", montext);
 		
 		System.out.println(c.getIndex(7, 6));
 	}
