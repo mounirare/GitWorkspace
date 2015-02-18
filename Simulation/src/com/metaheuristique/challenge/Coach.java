@@ -65,7 +65,8 @@ public class Coach {
 				+ "\nCost/Km : " + costKm 
 				+ "\nPosX : " + posX 
 				+ "\nPosY : "	+ posY 
-				+ "\nBusStopTraveled : " + busStopTraveled ;
+				+ "\nBusStopTraveled : " + busStopTraveled
+				+ "\nInd Pos : " + indPos ;
 	}
 
 	public String getIdCoach() {

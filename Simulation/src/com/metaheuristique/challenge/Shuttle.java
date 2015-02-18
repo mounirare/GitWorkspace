@@ -62,7 +62,8 @@ public class Shuttle {
 				+ "\nCost Usage : "+ costUsage 
 				+ "\nPosX : " + posX 
 				+ "\nPosY : " + posY
-				+ "\nBusStopTraveled : " + busStopTraveled;
+				+ "\nBusStopTraveled : " + busStopTraveled
+				+ "\nInd Pos : " + indPos ;
 	}
 
 	public String getIdShuttle() {
