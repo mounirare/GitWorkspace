@@ -154,6 +154,8 @@ public class Shuttle {
 	}
 	
 	public int getCost(){
+		if(distanceTraveled == 0)
+			return 0;
 		return costUsage + (costKm * distanceTraveled);
 	}
 }
