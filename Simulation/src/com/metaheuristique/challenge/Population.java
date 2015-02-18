@@ -57,21 +57,6 @@ public class Population {
 	}
 	
 	public void traitementCoach(Coach c, ArrayList<BusStop> busStopRest){
-		/*
-		 * - choisir un arrêt A aléatoirement tel que : P(A) =! 0 , C>P(A)
-			- Trest = Trest(A)
-			- N-- 
-			*- Si A != HUB, alors C = C - P(A), P(A) = 0 sinon finir
-			- Si N > 1 continuer sinon aller au HUB et finir
-			- chercher A’ aléatoirement tel que P(A’) =! 0 et C > P(A’) 
-			- Si Trest> T(A,A’)+T(A’,HUB) et Trest(A’) > T(A’, HUB)	//de base la dernière
-				- Se déplacer vers A’ (A <- A’)			//condition doit être vraie
-				- Trest = min(Trest - T(A,A’), Trest(A’))
-				- N--
-			- Sinon choisir un autre arrêt
-			-revenir à  *
-		 * 
-		 */
 		ArrayList<BusStop> busStopDisp = busStopRest;
 		ArrayList<String> temp;
 		Collections.shuffle(busStopDisp);
@@ -101,7 +86,8 @@ public class Population {
 		}
 		
 		while(c.getNbStopMade()<c.getMaxStop()-1 && i < busStopDisp.size() && !hub){
-			if((c.getCoachCapacity()-c.getNbPassengers()) > busStopDisp.get(i).getNbPassengers() && c.getChRemainTime() >= (matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()+matCoach[busStopDisp.get(i).getIndPos()][indHub].getTime())){
+			System.out.println("Size: "+ busStopDisp.size()+" i: "+ i);
+			if((c.getCoachCapacity()-c.getNbPassengers()) >= busStopDisp.get(i).getNbPassengers() && c.getChRemainTime() >= (matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()+matCoach[busStopDisp.get(i).getIndPos()][indHub].getTime())){
 				c.setDistanceTraveled(c.getDistanceTraveled() + matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
 				c.setNbPassengers(c.getNbPassengers() + busStopDisp.get(i).getNbPassengers());
 				busStopDisp.get(i).setNbPassengers(0);
