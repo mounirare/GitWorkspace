@@ -2,6 +2,7 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
+import com.metaheuristique.Gui.Graphic;
 import com.metaheuristique.utils.Coordinates;
 import com.metaheuristique.utils.DistanceTime;
 import com.metaheuristique.utils.ExtractData;
@@ -130,7 +131,7 @@ public class Main {
 		Solution sol = pop.calculSol();
 		sol.enregistrement();
 		
-		Graphic graphic = new Graphic("Carte", busStopList);
+		Graphic graphic = new Graphic("Carte", busStopList, coachList);
 	}
 
 }
