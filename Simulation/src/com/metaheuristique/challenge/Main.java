@@ -128,9 +128,9 @@ public class Main {
 			System.out.print(busStopList.get(i).getPosX()+";"+busStopList.get(i).getPosY()+", ");
 		}*/
 		
-		/*Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
+		Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
 		Solution sol = pop.calculSol();
-		sol.enregistrement();*/
+		sol.enregistrement(); 
 		
 		
 	}

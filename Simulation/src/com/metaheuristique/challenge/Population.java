@@ -38,11 +38,11 @@ public class Population {
 	}
 	
 	public Solution calculSol(){
-		int indHub;
 		solutions.add(new Solution(coachs, shuttles));
-		ArrayList<BusStop> busStopRest = busStops;
+		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
+		busStopRest.addAll(busStops);
 		Collections.shuffle(coachs);
-		Collections.shuffle(shuttles);
+		Collections.shuffle(shuttles); 
 		for(int i= 0; i < coachs.size(); i++){
 			traitementCoach(coachs.get(i), busStopRest);
 		}
@@ -57,7 +57,9 @@ public class Population {
 	}
 	
 	public void traitementCoach(Coach c, ArrayList<BusStop> busStopRest){
-		ArrayList<BusStop> busStopDisp = busStopRest;
+		System.out.println("BusStopRest :"+busStopRest);
+		ArrayList<BusStop> busStopDisp  = new ArrayList<BusStop>();
+		busStopDisp.addAll(busStopRest);
 		ArrayList<String> temp;
 		Collections.shuffle(busStopDisp);
 		Boolean premier = false;
@@ -82,7 +84,9 @@ public class Population {
 				if(busStopDisp.get(i).getIdBusStop().substring(0, 1).equals("H")){
 					hub = true;
 				}
+				busStopRest.remove(busStopDisp.get(i));
 				busStopDisp.remove(i);
+				
 			}
 			else{
 				i++;
@@ -108,6 +112,7 @@ public class Population {
 				if(busStopDisp.get(i).getIdBusStop().substring(0, 1).equals("H")){
 					hub = true;
 				}
+				busStopRest.remove(busStopDisp.get(i));
 				busStopDisp.remove(i); 
 			}
 			else{
