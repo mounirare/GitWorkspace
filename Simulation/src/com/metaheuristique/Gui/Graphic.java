@@ -1,23 +1,26 @@
-package com.metaheuristique.challenge;
+package com.metaheuristique.Gui;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
+import java.awt.Color;
 import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import com.metaheuristique.challenge.BusStop;
+import com.metaheuristique.challenge.Coach;
 
 public class Graphic extends JFrame{
 	private ArrayList<BusStop> busStopList;
+	private ArrayList<Coach> CoachList;
 	private JPanel fond;
 	private int width, height;
 
-	public Graphic(String title, ArrayList<BusStop> busStopList){
+	public Graphic(String title, ArrayList<BusStop> busStopList, ArrayList<Coach> coachList){
 		setTitle(title);
 		this.busStopList = busStopList;
+		this.CoachList = coachList;
+		
 		int twidth = 0, theight = 0;
 		for (int i = 0; i < busStopList.size(); i++) {
 			if(busStopList.get(i).getPosY() > theight)
@@ -28,23 +31,18 @@ public class Graphic extends JFrame{
 		width = twidth;
 		height = theight;
 		representation();
-		this.setVisible(true);
+		
 	}
 
 	public void representation(){
 		fond = new JPanel();
-		setSize(width*50, height*50);
-		BufferedImage myPicture;
-
-		for(int i = 0; i < busStopList.size(); i++){
-			int x = (int) (busStopList.get(i).getPosX());
-			int y = (int) (busStopList.get(i).getPosY());
-			ImagePanel image = new ImagePanel(x, y);
-			image.paint(getGraphics());
-			fond.add(image);
-		}
-
+		fond.setBackground(Color.white);
+		setSize(width*50+20, height*50+20);
+		setResizable(false);
+		DrawComponentsPanel image = new DrawComponentsPanel(busStopList, CoachList, width, height);
+		fond.add(image);
 		this.add(fond);
+		this.setVisible(true);
 	}
 
 	private void ajouterBus(float posX, float posY, ImageIcon image) {

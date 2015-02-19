@@ -20,8 +20,8 @@ public class Solution {
 		String sol= new String();
 		Coach c = coachList.get(indice);
 		for(int i=0; i<c.getBusStopTraveled().size(); i++){
-			String stop = c.getIdCoach()+";"+i+1+";"+c.getBusStopTraveled().get(i)+";";
-			if(c.getBusStopTraveled().get(i).substring(0, 1) == "B")
+			String stop = c.getIdCoach()+";"+(i+1)+";"+c.getBusStopTraveled().get(i)+";";
+			if(c.getBusStopTraveled().get(i).substring(0, 1).equals("B"))
 				stop = stop+"BUSSTOP";
 			else
 				stop = stop+"HUB";
@@ -34,8 +34,8 @@ public class Solution {
 		String sol= new String();
 		Shuttle s = shuttleList.get(indice);
 		for(int i=0; i<s.getBusStopTraveled().size(); i++){
-			String stop = s.getIdShuttle()+";"+i+1+";"+s.getBusStopTraveled().get(i)+";";
-			if(s.getBusStopTraveled().get(i).substring(0, 1) == "B")
+			String stop = s.getIdShuttle()+";"+(i+1)+";"+s.getBusStopTraveled().get(i)+";";
+			if(s.getBusStopTraveled().get(i).substring(0, 1).equals("B"))
 				stop = stop+"BUSSTOP";
 			else
 				stop = stop+"HUB";

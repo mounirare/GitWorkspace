@@ -2,6 +2,7 @@ package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
 
+import com.metaheuristique.Gui.Graphic;
 import com.metaheuristique.utils.Coordinates;
 import com.metaheuristique.utils.DistanceTime;
 import com.metaheuristique.utils.ExtractData;
@@ -72,7 +73,7 @@ public class Main {
 			else
 				shuttleList.add(new Shuttle(feetData.get(i), coordinates));
 		}
-		
+		/*
 		// Ajout des elements dans les listes
 		for (int i = 0; i < coachList.size(); i++) {
 			for (int j = 0; j < 3; j++) {
@@ -87,7 +88,7 @@ public class Main {
 				shuttleList.get(i).getBusStopTraveled().add(busStopList.get(id).getIdBusStop());
 			}
 		}
-		
+		*/
 		System.out.println("================================================");
 		System.out.println(coachList.toString());
 		System.out.println("================================================");
@@ -113,6 +114,7 @@ public class Main {
 			System.out.println("");
 		}
 		DistanceTime matShut[][] = new DistanceTime[distTimeCoaData.size()][distTimeCoaData.size()];
+		Graphic graphic = new Graphic("Carte", busStopList, coachList);
 		/*ArrayList<String> distancetimeCoord = ed.readDistTimeCoo();
 		
 		for(int i=0; i<busStopList.size(); i++){
@@ -126,11 +128,11 @@ public class Main {
 			System.out.print(busStopList.get(i).getPosX()+";"+busStopList.get(i).getPosY()+", ");
 		}*/
 		
-		Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
+		/*Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
 		Solution sol = pop.calculSol();
-		sol.enregistrement();
+		sol.enregistrement();*/
 		
-		Graphic graphic = new Graphic("Carte", busStopList);
+		
 	}
 
 }
