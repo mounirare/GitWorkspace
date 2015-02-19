@@ -42,7 +42,7 @@ public class Population {
 		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
 		busStopRest.addAll(busStops);
 		Collections.shuffle(coachs);
-		Collections.shuffle(shuttles);
+		Collections.shuffle(shuttles); 
 		for(int i= 0; i < coachs.size(); i++){
 			traitementCoach(coachs.get(i), busStopRest);
 		}
