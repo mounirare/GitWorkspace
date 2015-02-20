@@ -154,9 +154,9 @@ public class Shuttle {
 		this.indPos = indPos;
 	}
 	
-	public int getCost(){
+	public double getCost(){
 		if(distanceTraveled == 0)
 			return 0;
-		return costUsage + (costKm * distanceTraveled);
+		return costUsage + (costKm * ((double)distanceTraveled / 1000));
 	}
 }
