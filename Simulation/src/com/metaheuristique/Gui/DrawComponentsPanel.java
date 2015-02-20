@@ -6,8 +6,10 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.util.ArrayList;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 import com.metaheuristique.challenge.BusStop;
 import com.metaheuristique.challenge.Coach;
@@ -17,15 +19,16 @@ public class DrawComponentsPanel extends JPanel {
 	private ArrayList<BusStop> busStopList;
 	private ArrayList<Coach> CoachList;
 	private ArrayList<Shuttle> shuttleList;
-	private int posX, posY;
+	private float posX, posY, minw, minh;
 	private ImageIcon icBusStop;
 	private ImageIcon icCoach;
 	private ImageIcon icShuttle;
 	private Image imgBusStop; 
 	private Image imgCoach; 
-	private Image imgShuttle; 
+	private Image imgShuttle;
+	private float ratio;
 	
-	public DrawComponentsPanel(ArrayList<BusStop> bsl, ArrayList<Coach> cl, ArrayList<Shuttle> sl, int _posX, int _posY) {
+	public DrawComponentsPanel(ArrayList<BusStop> bsl, ArrayList<Coach> cl, ArrayList<Shuttle> sl, float _posX, float _posY, float minw, float minh, float ratio) {
 		this.icBusStop = new ImageIcon("Exemple/bus.png");
 		this.imgBusStop = icBusStop.getImage(); 
 		this.icCoach = new ImageIcon("Exemple/tr-bus.png");
@@ -33,44 +36,49 @@ public class DrawComponentsPanel extends JPanel {
 		this.icShuttle = new ImageIcon("Exemple/tr-shu.png");
 		this.imgShuttle = icShuttle.getImage();
 		
-		
 		busStopList = bsl;
 		CoachList = cl;
 		shuttleList = sl;
 		this.posX = _posX;
 		this.posY = _posY;
+		this.minw = minw;
+		this.minh = minh;
+		this.ratio = ratio;
 		
-		Dimension size = new Dimension(posX*50, posY*50); 
+		Dimension size = new Dimension(1360, 710); 
 		setPreferredSize(size); 
-		setMinimumSize(size); 
-		setMaximumSize(size);
-		setBackground(Color.white);
-		setSize(size); 
+		//setMinimumSize(size); 
+		//setMaximumSize(size);
+		//setBackground(Color.WHITE);
+		//setSize(size); 
+		//setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		setLayout(null);
 	}
 	
 	public void paintComponent(Graphics g){ 
-		for(int i = 0; i < CoachList.size(); i++){
-			int x = (int) (CoachList.get(i).getPosX());
-			int y = (int) (CoachList.get(i).getPosY());
-			//g.drawImage(img, x*50, y*50, null);
-			this.icCoach.paintIcon(this, g, x*50, y*50);
-		}
-		
+				
 		for(int i = 0; i < busStopList.size(); i++){
-			int x = (int) (busStopList.get(i).getPosX());
-			int y = (int) (busStopList.get(i).getPosY());
-			//g.drawImage(img, x*50, y*50, null);
-			this.icBusStop.paintIcon(this, g, x*50, y*50);
+			float x = busStopList.get(i).getPosX();
+			float y = busStopList.get(i).getPosY();
+			
+			this.icBusStop.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
+			//System.out.println("pos(" + x  + ";" + y + ")");
 		}
 		
 		for(int i = 0; i < shuttleList.size(); i++){
-			int x = (int) (shuttleList.get(i).getPosX());
-			int y = (int) (shuttleList.get(i).getPosY());
-			//g.drawImage(img, x*50, y*50, null);
-			this.icShuttle.paintIcon(this, g, x*50, y*50);
-		}
+			float x = shuttleList.get(i).getPosX();
+			float y = shuttleList.get(i).getPosY();
+			this.icShuttle.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
+			//System.out.println("pos(" + (x-minw)*ratio  + ";" + (y-minh)*ratio + ")");
+		} 
 		
+		for(int i = 0; i < CoachList.size(); i++){
+			float x = CoachList.get(i).getPosX();
+			float y = CoachList.get(i).getPosY();
+			this.icCoach.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
+			//System.out.println("pos(" + x  + ";" + y + ")");
+		}
+		this.icShuttle.paintIcon(this, g, 10, 10);
 	}
 
 }

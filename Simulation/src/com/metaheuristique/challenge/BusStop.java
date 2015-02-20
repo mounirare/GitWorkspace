@@ -5,7 +5,7 @@ import com.metaheuristique.utils.Coordinates;
 public class BusStop {
 
 	private String idBusStop;
-	private int postCode;
+	private String postCode;
 	private String city;
 	private float posX;
 	private float posY;
@@ -30,7 +30,7 @@ public class BusStop {
 	public BusStop(String data){
 		String[] datas = data.split(";");
 		this.idBusStop = datas[1];
-		this.postCode = Integer.parseInt(datas[2]);
+		this.postCode = datas[2];
 		this.city = datas[3];
 		this.posX = Float.parseFloat(datas[4]);
 		this.posY = Float.parseFloat(datas[5]);
@@ -41,7 +41,7 @@ public class BusStop {
 	public BusStop(String data, Coordinates coordinates){
 		String[] datas = data.split(";");
 		this.idBusStop = datas[1];
-		this.postCode = Integer.parseInt(datas[2]);
+		this.postCode = datas[2];
 		this.city = datas[3];
 		this.posX = Float.parseFloat(datas[4]);
 		this.posY = Float.parseFloat(datas[5]);
@@ -70,11 +70,11 @@ public class BusStop {
 		this.idBusStop = idBusStop;
 	}
 
-	public int getPostCode() {
+	public String getPostCode() {
 		return postCode;
 	}
 
-	public void setPostCode(int postCode) {
+	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
 
