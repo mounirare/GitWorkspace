@@ -11,8 +11,8 @@ public class Solution {
 	private double totalCost;
 	
 	public Solution(ArrayList<Coach> coachList, ArrayList<Shuttle> shuttleList){
-		this.coachList = coachList;
-		this.shuttleList = shuttleList;
+		this.coachList.addAll(coachList);
+		this.shuttleList.addAll(shuttleList);
 		totalCost = 0.0;
 	}
 	
@@ -30,6 +30,14 @@ public class Solution {
 		return sol;
 	}
 	
+	public double getTotalCost() {
+		return totalCost;
+	}
+
+	public void setTotalCost(double totalCost) {
+		this.totalCost = totalCost;
+	}
+
 	public String shuttlePath(int indice){
 		String sol= new String();
 		Shuttle s = shuttleList.get(indice);

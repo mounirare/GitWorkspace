@@ -139,6 +139,7 @@ public class Main {
 		Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
 		Solution sol = pop.calculSol();
 		sol.enregistrement();
+		System.out.println("Cout total : "+sol.getTotalCost());
 		
 		
 	}
