@@ -11,24 +11,32 @@ import javax.swing.JPanel;
 
 import com.metaheuristique.challenge.BusStop;
 import com.metaheuristique.challenge.Coach;
+import com.metaheuristique.challenge.Shuttle;
 
 public class DrawComponentsPanel extends JPanel {
 	private ArrayList<BusStop> busStopList;
 	private ArrayList<Coach> CoachList;
+	private ArrayList<Shuttle> shuttleList;
 	private int posX, posY;
 	private ImageIcon icBusStop;
 	private ImageIcon icCoach;
+	private ImageIcon icShuttle;
 	private Image imgBusStop; 
 	private Image imgCoach; 
+	private Image imgShuttle; 
 	
-	public DrawComponentsPanel(ArrayList<BusStop> bsl, ArrayList<Coach> cl, int _posX, int _posY) {
+	public DrawComponentsPanel(ArrayList<BusStop> bsl, ArrayList<Coach> cl, ArrayList<Shuttle> sl, int _posX, int _posY) {
 		this.icBusStop = new ImageIcon("Exemple/bus.png");
 		this.imgBusStop = icBusStop.getImage(); 
 		this.icCoach = new ImageIcon("Exemple/tr-bus.png");
-		this.imgCoach = icBusStop.getImage(); 
+		this.imgCoach = icBusStop.getImage();
+		this.icShuttle = new ImageIcon("Exemple/tr-shu.png");
+		this.imgShuttle = icShuttle.getImage();
+		
 		
 		busStopList = bsl;
 		CoachList = cl;
+		shuttleList = sl;
 		this.posX = _posX;
 		this.posY = _posY;
 		
@@ -54,6 +62,13 @@ public class DrawComponentsPanel extends JPanel {
 			int y = (int) (busStopList.get(i).getPosY());
 			//g.drawImage(img, x*50, y*50, null);
 			this.icBusStop.paintIcon(this, g, x*50, y*50);
+		}
+		
+		for(int i = 0; i < shuttleList.size(); i++){
+			int x = (int) (shuttleList.get(i).getPosX());
+			int y = (int) (shuttleList.get(i).getPosY());
+			//g.drawImage(img, x*50, y*50, null);
+			this.icShuttle.paintIcon(this, g, x*50, y*50);
 		}
 		
 	}
