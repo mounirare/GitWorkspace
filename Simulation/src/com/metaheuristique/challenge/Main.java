@@ -114,7 +114,7 @@ public class Main {
 			System.out.println("");
 		}
 		DistanceTime matShut[][] = new DistanceTime[distTimeCoaData.size()][distTimeCoaData.size()];
-		Graphic graphic = new Graphic("Carte", busStopList, coachList);
+		Graphic graphic = new Graphic("Carte", busStopList, coachList, shuttleList);
 		/*ArrayList<String> distancetimeCoord = ed.readDistTimeCoo();
 		
 		for(int i=0; i<busStopList.size(); i++){
@@ -130,7 +130,7 @@ public class Main {
 		
 		Population pop = new Population(busStopList, coachList, shuttleList, matCoach, matShut);
 		Solution sol = pop.calculSol();
-		sol.enregistrement(); 
+		sol.enregistrement();
 		
 		
 	}
