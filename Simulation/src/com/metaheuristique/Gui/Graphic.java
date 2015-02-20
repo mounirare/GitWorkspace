@@ -70,7 +70,7 @@ public class Graphic extends JFrame{
 
 	public void representation(){
 		fond = new JPanel();
-		fond.setBackground(Color.YELLOW);
+		fond.setBackground(Color.WHITE);
 		float ratio = 60;
 		setSize(1370, 740);
 		setResizable(false);

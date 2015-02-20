@@ -23,9 +23,11 @@ public class DrawComponentsPanel extends JPanel {
 	private ImageIcon icBusStop;
 	private ImageIcon icCoach;
 	private ImageIcon icShuttle;
+	private ImageIcon icHub;
 	private Image imgBusStop; 
 	private Image imgCoach; 
 	private Image imgShuttle;
+	private Image imgHub;
 	private float ratio;
 	
 	public DrawComponentsPanel(ArrayList<BusStop> bsl, ArrayList<Coach> cl, ArrayList<Shuttle> sl, float _posX, float _posY, float minw, float minh, float ratio) {
@@ -35,6 +37,8 @@ public class DrawComponentsPanel extends JPanel {
 		this.imgCoach = icBusStop.getImage();
 		this.icShuttle = new ImageIcon("Exemple/tr-shu.png");
 		this.imgShuttle = icShuttle.getImage();
+		this.icHub = new ImageIcon("Exemple/tr-hub.png");
+		this.imgHub = icShuttle.getImage();
 		
 		busStopList = bsl;
 		CoachList = cl;
@@ -61,7 +65,10 @@ public class DrawComponentsPanel extends JPanel {
 			float x = busStopList.get(i).getPosX();
 			float y = busStopList.get(i).getPosY();
 			
-			this.icBusStop.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
+			if(busStopList.get(i).getIdBusStop().charAt(0) == 'H')
+				this.icHub.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
+			else
+				this.icBusStop.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
 			//System.out.println("pos(" + x  + ";" + y + ")");
 		}
 		
@@ -78,7 +85,6 @@ public class DrawComponentsPanel extends JPanel {
 			this.icCoach.paintIcon(this, g, (int)((x-minw)*ratio), (int)((y-minh)*ratio));
 			//System.out.println("pos(" + x  + ";" + y + ")");
 		}
-		this.icShuttle.paintIcon(this, g, 10, 10);
 	}
 
 }
