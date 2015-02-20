@@ -53,7 +53,7 @@ public class Population {
 		for(int i=0; i<shuttles.size(); i++){
 			shuttleSol.add(shuttles.get(i).clone());
 		}
-		return shuttleSol;
+		return shuttleSol; 
 	}
 	
 	public Solution calculSol(){

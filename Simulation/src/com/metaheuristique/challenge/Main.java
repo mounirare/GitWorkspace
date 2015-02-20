@@ -143,7 +143,7 @@ public class Main {
 		if(sol != null){
 			sol.enregistrement();
 			System.out.println("Cout total : "+sol.getTotalCost());
-		}
+		} 
 		System.exit(0);
 		
 	}

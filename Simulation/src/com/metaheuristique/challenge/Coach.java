@@ -67,7 +67,7 @@ public class Coach implements Cloneable{
 		try {
 			// On récupère l'instance à renvoyer par l'appel de la 
 			// méthode super.clone()
-			//System.out.println("Coucou");
+			//System.out.println("Coucou"); 
 			c = (Coach)super.clone();
 			c.busStopTraveled = (ArrayList<String>) busStopTraveled.clone();
 		} catch(CloneNotSupportedException cnse) {
