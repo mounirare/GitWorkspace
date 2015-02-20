@@ -202,7 +202,7 @@ public class Population {
 						dernier = true;
 					}
 					busStopRest.remove(busStopDisp.get(i));
-					busStopDisp.remove(i);
+					busStopDisp.remove(i); 
 				}else{
 					
 				}
