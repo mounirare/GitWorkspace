@@ -113,7 +113,15 @@ public class Main {
 			}
 			System.out.println("");
 		}
-		DistanceTime matShut[][] = new DistanceTime[distTimeCoaData.size()][distTimeCoaData.size()];
+		
+		ArrayList<String> distTimeShData = ed.readDistTimeShu();
+		DistanceTime matShut[][] = new DistanceTime[distTimeShData.size()][distTimeShData.size()];
+		for (int i = 0; i < matShut.length; i++) {
+			String [] dataRow = distTimeShData.get(i).split(";");
+			for (int j = 0; j < matShut[i].length; j++) {
+				matShut[i][j] = new DistanceTime(dataRow[j*2], dataRow[j*2+1]); //On stocke la distance et le temps entre les points i et j
+			}
+		}
 		Graphic graphic = new Graphic("Carte", busStopList, coachList, shuttleList);
 		/*ArrayList<String> distancetimeCoord = ed.readDistTimeCoo();
 		
