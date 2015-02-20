@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.metaheuristique.utils.Coordinates;
 
-public class Coach {
+public class Coach implements Cloneable{
 
 	private String idCoach;
 	private int coachCapacity;
@@ -62,6 +62,23 @@ public class Coach {
 		busStopTraveled = new ArrayList<String>();
 	}
 
+	public Coach clone(){
+		Coach c = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			//System.out.println("Coucou");
+			c = (Coach)super.clone();
+			c.busStopTraveled = (ArrayList<String>) busStopTraveled.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		
+		return c;
+	}
+	
 	@Override
 	public String toString() {
 		return "\nId : " + idCoach

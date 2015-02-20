@@ -1,6 +1,7 @@
 package com.metaheuristique.challenge;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 
 import com.metaheuristique.utils.DistanceTime;
@@ -37,14 +38,32 @@ public class Population {
 		return -1;
 	}
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Coach> copieCoach(){
+		ArrayList<Coach> coachSol = new ArrayList<Coach>();
+		for(int i=0; i<coachs.size(); i++){
+			coachSol.add(coachs.get(i).clone());
+		}
+		return coachSol;
+	}
+	
+	@SuppressWarnings("unchecked")
+	public ArrayList<Shuttle> copieShuttle(){
+		ArrayList<Shuttle> shuttleSol = new ArrayList<Shuttle>();
+		for(int i=0; i<shuttles.size(); i++){
+			shuttleSol.add(shuttles.get(i).clone());
+		}
+		return shuttleSol;
+	}
+	
 	public Solution calculSol(){
 		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
 		ArrayList<Coach> coachSol = new ArrayList<Coach>();
 		ArrayList<Shuttle> shuttleSol = new ArrayList<Shuttle>();
 		busStopRest.addAll(busStops);
 		busStopRest.remove(0);
-		coachSol.addAll(coachs);
-		shuttleSol.addAll(shuttles);
+		coachSol = copieCoach();
+		shuttleSol = copieShuttle();
 		Collections.shuffle(coachSol);
 		Collections.shuffle(shuttleSol); 
 		for(int i= 0; i < coachSol.size(); i++){
@@ -56,6 +75,7 @@ public class Population {
 			j++;
 		}
 		if(busStopRest.isEmpty()){
+			//System.out.println(coachSol);
 			solutions.add(new Solution(coachSol, shuttleSol));
 			solutions.get(solutions.size()-1).calculCout();
 			return solutions.get(solutions.size()-1);
