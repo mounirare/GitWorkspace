@@ -38,17 +38,21 @@ public class Population {
 	}
 	
 	public Solution calculSol(){
-		solutions.add(new Solution(coachs, shuttles));
 		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
+		ArrayList<Coach> coachSol = new ArrayList<Coach>();
+		ArrayList<Shuttle> shuttleSol = new ArrayList<Shuttle>();
+		solutions.add(new Solution(coachSol, shuttleSol));
 		busStopRest.addAll(busStops);
-		Collections.shuffle(coachs);
-		Collections.shuffle(shuttles); 
-		for(int i= 0; i < coachs.size(); i++){
-			traitementCoach(coachs.get(i), busStopRest);
+		coachSol.addAll(coachs);
+		shuttleSol.addAll(shuttles);
+		Collections.shuffle(coachSol);
+		Collections.shuffle(shuttleSol); 
+		for(int i= 0; i < coachSol.size(); i++){
+			traitementCoach(coachSol.get(i), busStopRest);
 		}
 		int j=0;
-		while(!busStopRest.isEmpty() && j < shuttles.size()){
-			traitementShuttle(shuttles.get(j), busStopRest);
+		while(!busStopRest.isEmpty() && j < shuttleSol.size()){
+			traitementShuttle(shuttleSol.get(j), busStopRest);
 			j++;
 		}
 		solutions.get(solutions.size()-1).calculCout();
@@ -133,23 +137,6 @@ public class Population {
 	}
 	
 	public void traitementShuttle(Shuttle s, ArrayList<BusStop> busStopRest){
-		/*
-		 * 
-			chercher A’ tel que P(A’) =! 0 et C > P(A’) et Trest > T(A,A’)+T(A’,HUB)
-			aller en A’
-			Trest = min(Trest - T(A,A’), Trest(A’))
-			retour à * tant que cherche A’ marche
-			//Si plus de A’
-		+ 	chercher A* tel que Trest > T(A,A*)+T(A*,HUB)
-			Récupérer Bus B passé par A*
-			Si CB > = C et (Trest(A*) <= Trest ou Trest(B) > (Trest - Trest(A*))) alors
-				aller en A*
-				Trest = min(Trest - T(A,A*), Trest(A*))
-				finir
-			sinon 
-				retour à +
-			Si plus de A* correspondant alors aller au HUB et finir
-		 */
 		ArrayList<BusStop> busStopDisp  = new ArrayList<BusStop>();
 		busStopDisp.addAll(busStops);
 		ArrayList<String> temp;
@@ -204,7 +191,32 @@ public class Population {
 					busStopRest.remove(busStopDisp.get(i));
 					busStopDisp.remove(i); 
 				}else{
-					
+					if(busStopDisp.get(i).getIdBusStop().substring(0, 1).equals("H")){
+						dernier = true;
+						s.setDistanceTraveled(s.getDistanceTraveled() + matShut[s.getIndPos()][indHub].getDistance());
+						temp = s.getBusStopTraveled();
+						temp.add(idHub);
+						s.setBusStopTraveled(temp);
+						s.setShRemainTime(s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime());
+						s.setIndPos(indHub);
+					}else{
+						if(busStopDisp.get(i).getBusPasse()!= null){
+							Coach c = busStopDisp.get(i).getBusPasse();
+							if((c.getCoachCapacity()-c.getNbPassengers()) >= s.getNbPassengers() && (((s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime()) >= busStopDisp.get(i).getRemainTime()) || c.getChRemainTime() >= ((s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime())- busStopDisp.get(i).getRemainTime()))){
+								dernier = true;
+								s.setDistanceTraveled(s.getDistanceTraveled() + matShut[s.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
+								temp = s.getBusStopTraveled();
+								temp.add(busStopDisp.get(i).getIdBusStop());
+								s.setBusStopTraveled(temp);
+								s.setShRemainTime(s.getShRemainTime() - matShut[s.getIndPos()][busStopDisp.get(i).getIndPos()].getTime());
+								s.setIndPos(busStopDisp.get(i).getIndPos());
+							}else{
+								i++;
+							}
+						}else{
+							i++;
+						}
+					}
 				}
 			}else{
 				i++;

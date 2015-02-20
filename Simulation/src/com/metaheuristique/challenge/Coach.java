@@ -165,7 +165,7 @@ public class Coach {
 		this.indPos = indPos;
 	}	
 	
-	public int getCost(){
-		return costKm * distanceTraveled; 
+	public double getCost(){
+		return costKm * ((double)distanceTraveled/1000); 
 	}
 }

@@ -11,8 +11,8 @@ public class Solution {
 	private double totalCost;
 	
 	public Solution(ArrayList<Coach> coachList, ArrayList<Shuttle> shuttleList){
-		this.coachList.addAll(coachList);
-		this.shuttleList.addAll(shuttleList);
+		this.coachList = coachList;
+		this.shuttleList = shuttleList;
 		totalCost = 0.0;
 	}
 	
@@ -73,7 +73,7 @@ public class Solution {
 		for(int i=0; i<shuttleList.size(); i++){
 			if(shuttleList.get(i).getDistanceTraveled()!= 0){
 				fleet = shuttlePath(i);
-				ecriture = ecriture + fleet +"\n";
+				ecriture = ecriture + fleet+"\n";
 			}
 		}
 		fichier.ecriture("Solution.txt", ecriture);
