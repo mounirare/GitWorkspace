@@ -41,8 +41,8 @@ public class Population {
 		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
 		ArrayList<Coach> coachSol = new ArrayList<Coach>();
 		ArrayList<Shuttle> shuttleSol = new ArrayList<Shuttle>();
-		solutions.add(new Solution(coachSol, shuttleSol));
 		busStopRest.addAll(busStops);
+		busStopRest.remove(0);
 		coachSol.addAll(coachs);
 		shuttleSol.addAll(shuttles);
 		Collections.shuffle(coachSol);
@@ -55,13 +55,19 @@ public class Population {
 			traitementShuttle(shuttleSol.get(j), busStopRest);
 			j++;
 		}
-		solutions.get(solutions.size()-1).calculCout();
-		return solutions.get(solutions.size()-1);
+		if(busStopRest.isEmpty()){
+			solutions.add(new Solution(coachSol, shuttleSol));
+			solutions.get(solutions.size()-1).calculCout();
+			return solutions.get(solutions.size()-1);
+		}
+		System.out.println("Arret de bus oublié : "+busStopRest);
+		return null;
+		
 		
 	}
 	
 	public void traitementCoach(Coach c, ArrayList<BusStop> busStopRest){
-		System.out.println("BusStopRest :"+busStopRest);
+		//System.out.println("BusStopRest :"+busStopRest);
 		ArrayList<BusStop> busStopDisp  = new ArrayList<BusStop>();
 		busStopDisp.addAll(busStopRest);
 		ArrayList<String> temp;
@@ -69,11 +75,11 @@ public class Population {
 		Boolean premier = false;
 		Boolean hub = false;
 		int i = 0;
-		System.out.println("Coach "+c.getIdCoach()+":");
-		System.out.println("Liste : "+busStopDisp);
+		//System.out.println("Coach "+c.getIdCoach()+":");
+		//System.out.println("Liste : "+busStopDisp);
 		while(i < busStopDisp.size() && !premier){
 			if(c.getCoachCapacity() > busStopDisp.get(i).getNbPassengers()){
-				System.out.println("1er Bus Stop: "+busStopDisp.get(i).getIdBusStop());
+				//System.out.println("1er Bus Stop: "+busStopDisp.get(i).getIdBusStop());
 				premier = true;
 				c.setDistanceTraveled(matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
 				c.setNbPassengers(busStopDisp.get(i).getNbPassengers());
@@ -99,7 +105,7 @@ public class Population {
 		
 		while(c.getNbStopMade()<c.getMaxStop()-1 && i < busStopDisp.size() && !hub){
 			if((c.getCoachCapacity()-c.getNbPassengers()) >= busStopDisp.get(i).getNbPassengers() && c.getChRemainTime() >= (matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()+matCoach[busStopDisp.get(i).getIndPos()][indHub].getTime())){
-				System.out.println("Bus Stop: "+busStopDisp.get(i).getIdBusStop());
+				//System.out.println("Bus Stop: "+busStopDisp.get(i).getIdBusStop());
 				c.setDistanceTraveled(c.getDistanceTraveled() + matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
 				c.setNbPassengers(c.getNbPassengers() + busStopDisp.get(i).getNbPassengers());
 				busStopDisp.get(i).setNbPassengers(0);
@@ -124,7 +130,7 @@ public class Population {
 			}
 		}
 		if(!hub){
-			System.out.println("Je passe ici!");
+			//System.out.println("Je passe ici!");
 			c.setDistanceTraveled(c.getDistanceTraveled() + matCoach[c.getIndPos()][indHub].getDistance());
 			temp = c.getBusStopTraveled();
 			temp.add(idHub);
@@ -145,14 +151,14 @@ public class Population {
 		Boolean premier = false;
 		Boolean dernier = false;
 		int i = 0;
-		System.out.println("Coach "+s.getIdShuttle()+":");
-		System.out.println("Liste : "+busStopDisp);
+		//System.out.println("Coach "+s.getIdShuttle()+":");
+		//System.out.println("Liste : "+busStopDisp);
 		while(i < busStopRest.size() && !premier){
 			if(s.getShuttleCapacity() > busStopRest.get(i).getNbPassengers()){
 				if(busStopRest.get(i).getIdBusStop().substring(0, 1).equals("H")){
 					i++;
 				}else{
-					System.out.println("1er Bus Stop: "+busStopRest.get(i).getIdBusStop());
+					//System.out.println("1er Bus Stop: "+busStopRest.get(i).getIdBusStop());
 					premier = true;
 					s.setDistanceTraveled(matShut[s.getIndPos()][busStopRest.get(i).getIndPos()].getDistance());
 					s.setNbPassengers(busStopRest.get(i).getNbPassengers());
@@ -173,7 +179,7 @@ public class Population {
 		while (i < busStopDisp.size() && !dernier){
 			if((s.getShuttleCapacity() - s.getNbPassengers()) >= busStopDisp.get(i).getNbPassengers() && s.getShRemainTime() >= (matShut[s.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()+matShut[busStopDisp.get(i).getIndPos()][indHub].getTime())){
 				if(busStopDisp.get(i).getNbPassengers() != 0){
-					System.out.println("Bus Stop: "+busStopDisp.get(i).getIdBusStop());
+					//System.out.println("Bus Stop: "+busStopDisp.get(i).getIdBusStop());
 					s.setDistanceTraveled(s.getDistanceTraveled() + matShut[s.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
 					s.setNbPassengers(s.getNbPassengers() + busStopDisp.get(i).getNbPassengers());
 					busStopDisp.get(i).setNbPassengers(0);
