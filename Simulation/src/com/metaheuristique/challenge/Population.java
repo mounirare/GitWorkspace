@@ -56,11 +56,28 @@ public class Population {
 		return shuttleSol; 
 	}
 	
+	@SuppressWarnings("unchecked")
+	public ArrayList<BusStop> copieBusStop(){
+		ArrayList<BusStop> BusStopDisp = new ArrayList<BusStop>();
+		for(int i=0; i<busStops.size(); i++){
+			BusStopDisp.add(busStops.get(i).clone());
+		}
+		return BusStopDisp; 
+	}
+	
+	public void resetBusStop(ArrayList<BusStop> busStopRest){
+		for(int i = 0; i < busStopRest.size(); i++){
+			if(busStopRest.get(i).getBusPasse() != null)
+				busStopRest.get(i).setBusPasse(null);
+		}
+	}
+	
 	public Solution calculSol(){
 		ArrayList<BusStop> busStopRest = new ArrayList<BusStop>();
 		ArrayList<Coach> coachSol = new ArrayList<Coach>();
 		ArrayList<Shuttle> shuttleSol = new ArrayList<Shuttle>();
-		busStopRest.addAll(busStops);
+		busStopRest = copieBusStop();
+		resetBusStop(busStopRest);
 		busStopRest.remove(0);
 		coachSol = copieCoach();
 		shuttleSol = copieShuttle();
@@ -234,6 +251,9 @@ public class Population {
 								temp = s.getBusStopTraveled();
 								temp.add(busStopDisp.get(i).getIdBusStop());
 								s.setBusStopTraveled(temp);
+								if((s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime()) < busStopDisp.get(i).getRemainTime())
+									c.setChRemainTime(c.getChRemainTime() - (busStopDisp.get(i).getRemainTime() - (s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime())));
+								c.setNbPassengers(c.getNbPassengers() + s.getNbPassengers());
 								s.setShRemainTime(s.getShRemainTime() - matShut[s.getIndPos()][busStopDisp.get(i).getIndPos()].getTime());
 								s.setIndPos(busStopDisp.get(i).getIndPos());
 							}else{
@@ -247,6 +267,14 @@ public class Population {
 			}else{
 				i++;
 			}
+		}
+		if(!dernier){
+			s.setDistanceTraveled(s.getDistanceTraveled() + matShut[s.getIndPos()][indHub].getDistance());
+			temp = s.getBusStopTraveled();
+			temp.add(idHub);
+			s.setBusStopTraveled(temp);
+			s.setShRemainTime(s.getShRemainTime() - matShut[s.getIndPos()][indHub].getTime());
+			s.setIndPos(indHub);
 		}
 		
 	}

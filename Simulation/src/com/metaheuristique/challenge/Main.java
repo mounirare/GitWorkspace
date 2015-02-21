@@ -144,7 +144,7 @@ public class Main {
 			sol.enregistrement();
 			System.out.println("Cout total : "+sol.getTotalCost());
 		} 
-		//System.exit(0);
+		System.exit(0);
 		
 	}
 

@@ -1,8 +1,10 @@
 package com.metaheuristique.challenge;
 
+import java.util.ArrayList;
+
 import com.metaheuristique.utils.Coordinates;
 
-public class BusStop {
+public class BusStop implements Cloneable{
 
 	private String idBusStop;
 	private String postCode;
@@ -60,6 +62,22 @@ public class BusStop {
 				+ "\nNbPassengers : " + nbPassengers 
 				+ "\nRemainTime : " + remainTime
 				+ "\nInd Pos : " + indPos ;*/
+	}
+	
+	public BusStop clone(){
+		BusStop c = null;
+		try {
+			// On récupère l'instance à renvoyer par l'appel de la 
+			// méthode super.clone()
+			//System.out.println("Coucou"); 
+			c = (BusStop)super.clone();
+		} catch(CloneNotSupportedException cnse) {
+			// Ne devrait jamais arriver car nous implémentons 
+			// l'interface Cloneable
+			cnse.printStackTrace(System.err);
+		}
+		
+		return c;
 	}
 
 	public String getIdBusStop() {

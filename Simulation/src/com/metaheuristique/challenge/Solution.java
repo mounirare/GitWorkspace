@@ -76,6 +76,6 @@ public class Solution {
 				ecriture = ecriture + fleet+"\n";
 			}
 		}
-		fichier.ecriture("Solution.txt", ecriture);
+		fichier.ecriture("Solution.csv", ecriture);
 	}
 }
