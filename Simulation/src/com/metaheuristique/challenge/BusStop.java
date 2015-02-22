@@ -12,6 +12,7 @@ public class BusStop implements Cloneable{
 	private float posX;
 	private float posY;
 	private int nbPassengers;
+	private int tamponPassengers;
 	private int remainTime;
 	private int indPos;
 	private Coach busPasse;
@@ -50,6 +51,15 @@ public class BusStop implements Cloneable{
 		this.nbPassengers = Integer.parseInt(datas[6]);
 		this.remainTime = Integer.parseInt(datas[7]);
 		this.indPos = coordinates.getIndex(posX, posY);
+		this.tamponPassengers = Integer.parseInt(datas[6]);
+	}
+
+	public int getTamponPassengers() {
+		return tamponPassengers;
+	}
+
+	public void setTamponPassengers(int tamponPassengers) {
+		this.tamponPassengers = tamponPassengers;
 	}
 
 	@Override

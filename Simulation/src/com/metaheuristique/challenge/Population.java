@@ -67,6 +67,7 @@ public class Population {
 	
 	public void resetBusStop(ArrayList<BusStop> busStopRest){
 		for(int i = 0; i < busStopRest.size(); i++){
+			busStopRest.get(i).setNbPassengers(busStopRest.get(i).getTamponPassengers());
 			if(busStopRest.get(i).getBusPasse() != null)
 				busStopRest.get(i).setBusPasse(null);
 		}
@@ -141,6 +142,7 @@ public class Population {
 		}
 		
 		while(c.getNbStopMade()<c.getMaxStop()-1 && i < busStopDisp.size() && !hub){
+			//System.out.println("Arret "+busStopRest.get(i).getIdBusStop()+", NbPassenger: "+busStopRest.get(i).getNbPassengers()+", Tampon: "+busStopRest.get(i).getTamponPassengers());
 			if((c.getCoachCapacity()-c.getNbPassengers()) >= busStopDisp.get(i).getNbPassengers() && c.getChRemainTime() >= (matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getTime()+matCoach[busStopDisp.get(i).getIndPos()][indHub].getTime())){
 				//System.out.println("Bus Stop: "+busStopDisp.get(i).getIdBusStop());
 				c.setDistanceTraveled(c.getDistanceTraveled() + matCoach[c.getIndPos()][busStopDisp.get(i).getIndPos()].getDistance());
