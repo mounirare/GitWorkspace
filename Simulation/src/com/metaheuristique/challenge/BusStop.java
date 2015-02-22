@@ -48,7 +48,7 @@ public class BusStop implements Cloneable{
 		this.city = datas[3];
 		this.posX = Float.parseFloat(datas[4]);
 		this.posY = Float.parseFloat(datas[5]);
-		this.nbPassengers = Integer.parseInt(datas[6]);
+		this.nbPassengers = Integer.parseInt(datas[6]); 
 		this.remainTime = Integer.parseInt(datas[7]);
 		this.indPos = coordinates.getIndex(posX, posY);
 		this.tamponPassengers = Integer.parseInt(datas[6]);
