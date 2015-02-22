@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class ExtractData {
 	Fichier file = new Fichier();
-	//String directory = "Instance 1/";
-	String directory = "Exemple/";
+	String directory = "Instance 1/";
+	//String directory = "Exemple/";
 	String fileName;
 	
 	public ArrayList<String> readBusStops(){
